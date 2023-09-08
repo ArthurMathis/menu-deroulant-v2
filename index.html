@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link src="styles.css" rel="stylesheet">
+</head>
+<body>
+
+<style>
+    :root{
+        --color: #333;
+        --background: #F5F7F7;
+
+        --taille: 54px;
+    }
+
+    body{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .menu-icon{
+        position: relative;
+        width: var(--taille);
+        height: var(--taille);
+
+
+
+        border-radius: 50%;
+        background-color: var(--background);
+    }
+
+    .menu-icon span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: block;
+        width: 22px;
+        height: 2px;
+
+        background-color: var(--color);
+    }
+
+    .menu-icon span::before,
+    .menu-icon span::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: block;
+        width: 22px;
+        height: 2px;
+
+        content: '';
+        background-color: var(--color);
+        transition: transform 0.25s;
+    }
+
+    .menu-icon span::before{
+        transform: translateY(-6px);
+    }
+
+    .menu-icon span::after{
+        transform: translateY(6px);
+    }
+
+    .menu-icon:hover span::before{
+        transform: translateY(-8px);
+    }
+
+    .menu-icon:hover span::after{
+        transform: translateY(8px);
+    }
+
+    /******** Animation is-opened *********/
+
+    .menu-icon.is-opened{
+        transform: rotate(180deg);
+    }
+
+    .menu-icon.is-opened span{
+        background: transparent;
+    }
+
+    .menu-icon.is-opened span::before{
+        transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-icon.is-opened span::after{
+        transform: translateY(0) rotate(-45deg);
+    }
+
+    .menu-icon.is-opened svg{
+        transform: rotate(-180deg);
+        stroke-dashoffset: 0;
+    }
+
+    /******** SVG ********/
+    svg{
+        fill:var(--background);
+        stroke-width: 1px;
+        stroke: var(--color);
+        stroke-dasharray: 170;
+        stroke-dashoffset: 170;
+        transition: stroke-dashoffset 0.5s;
+    }
+
+</style>
+
+    <div class="menu-icon">
+        <svg x="0" y="0" width="54px" height="54px" viewBox="0 0 54px 54px">
+            <circle cx="27" cy="27" r="26px"></circle>
+        </svg>
+        <span></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
